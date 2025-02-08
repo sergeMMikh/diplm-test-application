@@ -3,7 +3,7 @@ name: Ci-Cd-Pipeline-to-AWS
 env:
   AWS_REGION_NAME: "eu-central-1"
   REGISTRY: docker.io
-  IMAGE_NAME: ergemmikh/test-app
+  IMAGE_NAME: sergemmikh/test-app
 
 on:
   push:
@@ -46,8 +46,8 @@ jobs:
       - name: Build and push Docker image
         run: |
           echo "Latest tag: ${{ steps.get-latest-tag.outputs.tag }}"
-          docker build -t $IMAGE_NAME:${{ github.sha }} .  # ✅ Теперь `IMAGE_NAME` без `tagname`
-          docker tag $IMAGE_NAME:${{ github.sha }} $IMAGE_NAME:${{ env.TAG_NAME }}  # ✅ Используем переменную из ENV
+          docker build -t $IMAGE_NAME:${{ github.sha }} .
+          docker tag $IMAGE_NAME:${{ github.sha }} $IMAGE_NAME:${{ steps.get-latest-tag.outputs.tag }}
           docker push $IMAGE_NAME:${{ github.sha }}
           docker push $IMAGE_NAME:${{ env.TAG_NAME }}
       
