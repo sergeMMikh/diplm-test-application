@@ -63,6 +63,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.MY_AWS_SECRET_KEY }}
           aws-region: ${{ env.AWS_REGION_NAME }}
 
+      - name: Update kubeconfig
+        run: |
+          aws eks update-kubeconfig --region ${{ env.AWS_REGION_NAME }} --name diplom-claster
+
   #     - name: Create new Elastic Beanstalk Application Version
   #       run: |
   #         aws elasticbeanstalk create-application-version \
