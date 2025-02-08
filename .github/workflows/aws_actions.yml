@@ -49,7 +49,7 @@ jobs:
           docker build -t $IMAGE_NAME:${{ github.sha }} .
           docker tag $IMAGE_NAME:${{ github.sha }} $IMAGE_NAME:${{ steps.get-latest-tag.outputs.tag }}
           docker push $IMAGE_NAME:${{ github.sha }}
-          docker push $IMAGE_NAME:${{ env.TAG_NAME }}
+          docker push $IMAGE_NAME:${{ steps.get-latest-tag.outputs.tag }}
       
 
       # - name: Configure AWS Credentials
