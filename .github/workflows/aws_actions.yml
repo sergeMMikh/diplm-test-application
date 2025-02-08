@@ -2,8 +2,8 @@ name: Ci-Cd-Pipeline-to-AWS
 
 env:
   AWS_REGION_NAME: "eu-central-1"
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  REGISTRY: sergemmikh
+  IMAGE_NAME: test-app
 
 on:
   push:
