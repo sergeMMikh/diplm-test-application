@@ -67,6 +67,9 @@ jobs:
         run: |
           aws eks update-kubeconfig --region ${{ env.AWS_REGION_NAME }} --name diplom-claster
 
+      - uses: actions-ecosystem/action-get-latest-tag@v1
+        id: get-latest-tag
+
       - name: Deploy to Kubernetes
         run: |
           echo "image: test-app=sergemmikh/test-app:${{ steps.get-latest-tag.outputs.tag }}"
