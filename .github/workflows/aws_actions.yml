@@ -2,7 +2,7 @@ name: Ci-Cd-Pipeline-to-AWS
 
 env:
   AWS_REGION_NAME: "eu-central-1"
-  REGISTRY: ghcr.io
+  REGISTRY: docker.io
   IMAGE_NAME: ergemmikh/test-app:tagname
 
 on:
