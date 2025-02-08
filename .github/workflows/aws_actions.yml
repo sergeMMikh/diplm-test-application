@@ -39,11 +39,14 @@ jobs:
       - name: Extract tag name
         id: vars
         run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      - uses: actions-ecosystem/action-get-latest-tag@v1
+        id: get-latest-tag
   
       - name: Build and push Docker image
         run: |
           docker build -t $IMAGE_NAME:${{ github.sha }} .
-          docker tag $IMAGE_NAME:${{ github.sha }} $IMAGE_NAME:${{ env.TAG_NAME }}
+          docker tag $IMAGE_NAME:${{ github.sha }} $IMAGE_NAME:${{ steps.get-latest-tag.outputs.tag }}
           docker push $IMAGE_NAME:${{ github.sha }}
           docker push $IMAGE_NAME:${{ env.TAG_NAME }}
       
