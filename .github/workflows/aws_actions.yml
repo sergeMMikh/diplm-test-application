@@ -76,7 +76,7 @@ jobs:
       - name: Deploy to Kubernetes
         run: |
           echo "image: test-app=sergemmikh/test-app:${{ steps.get-latest-tag.outputs.tag }}"
-          kubectl set image deployment/test-app test-app=sergemmikh/test-app:${{ steps.get-latest-tag.outputs.tag }} -n monitoring record=true
+          kubectl set image deployment/test-app test-app=sergemmikh/test-app:${{ steps.get-latest-tag.outputs.tag }} -n monitoring --record=true
           kubectl rollout status deployment/test-app -n monitoring
 
   #     - name: Create new Elastic Beanstalk Application Version
