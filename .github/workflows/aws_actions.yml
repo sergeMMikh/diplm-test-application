@@ -3,7 +3,7 @@ name: Ci-Cd-Pipeline-to-AWS
 env:
   AWS_REGION_NAME: "eu-central-1"
   REGISTRY: docker.io
-  IMAGE_NAME: ergemmikh/test-app:tagname
+  IMAGE_NAME: ergemmikh/test-app
 
 on:
   push:
